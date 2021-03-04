@@ -13,16 +13,16 @@ jobs:
           pkg-manager: yarn 
       - run:
           name: Run linter 
-          command: yarn lint 
+          command: make lint 
       - run:
           name: Run tests
-          command: yarn test
+          command: make test
       - run:
           name: Build
-          command: yarn compile 
+          command: make build
       - run:
           name: Pack
-          command: yarn pack
+          command: make pack
       - run:
           name: Copy package to artifacts directory 
           command: mkdir -p dist && cp splunk-otel-v*.tgz dist
@@ -42,7 +42,7 @@ jobs:
           name: Authenticate npm
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
       - run:
-          command: yarn publish 
+          command: make publish 
 
 workflows:
   build: 
